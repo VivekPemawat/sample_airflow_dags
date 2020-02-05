@@ -23,7 +23,7 @@ dag = DAG('kubernetes_sample', description='Simple tutorial DAG',
 
 passing = KubernetesPodOperator(namespace='airflow',
                           image="ubuntu:latest",
-                          cmds=["Python","-c"],
+                          cmds=["python","-c"],
                           arguments=["print('hello world')"],
                           labels={"foo": "bar"},
                           name="fail",
