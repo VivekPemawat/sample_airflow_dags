@@ -14,9 +14,9 @@ default_args = {
     'retries': 1,
     'retry_delay': timedelta(minutes=5)
 }
-
-dag = DAG(
-    'kubernetes_sample', default_args=default_args, schedule_interval=timedelta(minutes=10))
+dag = DAG('kubernetes_sample', description='Simple tutorial DAG',
+          schedule_interval='0 12 * * *',
+          start_date=datetime(2017, 3, 20), catchup=False)
 
 
 #start = DummyOperator(task_id='run_this_first', dag=dag)
