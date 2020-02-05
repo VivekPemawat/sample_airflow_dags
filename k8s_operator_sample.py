@@ -32,15 +32,6 @@ passing = KubernetesPodOperator(namespace='airflow',
                           dag=dag
                           )
 
-failing = KubernetesPodOperator(namespace='airflow',
-                          image="ubuntu:latest",
-                          cmds=["Python","-c"],
-                          arguments=["print('hello world')"],
-                          labels={"foo": "bar"},
-                          name="fail",
-                          task_id="failing-task",
-                          get_logs=True,
-                          dag=dag
-                          )
 
-passing >> failing
+
+passing 
