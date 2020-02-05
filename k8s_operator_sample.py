@@ -16,7 +16,7 @@ default_args = {
 }
 dag = DAG('kubernetes_sample', description='Simple tutorial DAG',
           schedule_interval='0 12 * * *',
-          start_date=datetime(2017, 3, 20), catchup=False)
+          start_date=datetime(2017, 3, 20), catchup=False,xcom_push=false)
 
 
 #start = DummyOperator(task_id='run_this_first', dag=dag)
