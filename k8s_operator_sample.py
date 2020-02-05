@@ -1,8 +1,8 @@
 from airflow import DAG
 from datetime import datetime, timedelta
-from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
+from airflow.contrib.operators.kubernetes_pod_operator import \
+    KubernetesPodOperator
 from airflow.operators.dummy_operator import DummyOperator
-
 
 default_args = {
     'owner': 'airflow',
@@ -16,23 +16,20 @@ default_args = {
 }
 dag = DAG('kubernetes_sample', description='Simple tutorial DAG',
           schedule_interval='0 12 * * *',
-          start_date=datetime(2017, 3, 20), catchup=False,xcom_push=false)
+          start_date=datetime(2017, 3, 20), catchup=False)
 
-
-#start = DummyOperator(task_id='run_this_first', dag=dag)
+# start = DummyOperator(task_id='run_this_first', dag=dag)
 
 passing = KubernetesPodOperator(namespace='airflow',
-                          image="python:latest",
-                          cmds=["python","-c"],
-                          arguments=["print('hello world')"],
-                          labels={"foo": "bar"},
-                          name="fail",
-                          task_id="failing-task",
-                          get_logs=True,
-                          dag=dag,
-                                xcom_push = False
-                          )
+                                image="python:latest",
+                                cmds=["python", "-c"],
+                                arguments=["print('hello world')"],
+                                labels={"foo": "bar"},
+                                name="fail",
+                                task_id="failing-task",
+                                get_logs=True,
+                                dag=dag,
+                                xcom_push=False
+                                )
 
-
-
-passing 
+passing
