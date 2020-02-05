@@ -29,7 +29,8 @@ passing = KubernetesPodOperator(namespace='airflow',
                           name="fail",
                           task_id="failing-task",
                           get_logs=True,
-                          dag=dag
+                          dag=dag,
+                                xcom_push = False
                           )
 
 
